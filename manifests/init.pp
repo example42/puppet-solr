@@ -13,13 +13,9 @@
 #     - source  : Installs solr downloading and extracting a specific tarball or zip file
 #     - puppi   : Installs solr tarball or file via Puppi, creating the "puppi deploy solr" command
 #
-# [*install_version*]
-#   The version of solr to install. Use the upstream developer naming convention. 
-#   Used if install => "source" or "puppi". This value is used if you don't override the default install_source
-#
 # [*install_source*]
 #   The URL from where to retrieve the source tarball/zip. Used if install => "source" or "puppi"
-#   Default is from upstream developer site.
+#   Default is from upstream developer site. Update the version when needed.
 #
 # [*install_destination*]
 #   The base path where to extract the source tarball/zip. Used if install => "source" or "puppi"
@@ -126,7 +122,6 @@
 #
 class solr (
   $install             = $solr::params::install,
-  $install_version     = $solr::params::install_version,
   $install_source      = $solr::params::install_source,
   $install_destination = $solr::params::install_destination,
   $install_precommand  = $solr::params::install_precommand,
@@ -217,6 +212,7 @@ class solr (
 
   # Provide puppi data, if enabled ( puppi => true )
   if $solr::puppi == true { 
+    $puppivars=get_class_args()
     file { "puppi_solr":
       path    => "${settings::vardir}/puppi/solr",
       mode    => "0644",
@@ -224,7 +220,7 @@ class solr (
       group   => "root",
       ensure  => "${solr::manage_file}",
       require => Class["puppi"],         
-      content => template("solr/puppi.erb"),
+      content => inline_template("<%= puppivars.to_yaml %>"),
     }
   }
 

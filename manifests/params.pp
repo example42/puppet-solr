@@ -14,17 +14,15 @@
 class solr::params {
 
   # Default installation type depends on OS package availability
-  $install = $operatingsysten ? {
-    /(?i:Ubuntu)/ => "package",
+  $install = $operatingsystem ? {
+    /(?i:Ubuntu|Debian|Mint)/ => "package",
     default       => "source",
   }
 
-  $install_source = "http://www.apache.org/dist/lucene/solr/${solr::install_version}/apache-solr-${solr::install_version}.tgz"
+  # Install source from the upstream provider is updated to module's last update time
+  # You may need to change this: use the "install_source" parameter of the solr class
+  $install_source = "http://www.apache.org/dist/lucene/solr/3.4.0/apache-solr-3.4.0.tgz"
 
-  # This is the latest version at module creation time, can be overriden
-  $install_version = "3.4.0"
-
- 
   $install_destination = $operatingsystem ? {
     default                   => "/opt/solr",
   }
@@ -38,7 +36,7 @@ class solr::params {
   $url_pattern         = "Welcome to Solr!"
 
   $package = $operatingsystem ? {
-    /(?i:Ubuntu)/ => "solr-tomcat",
+    /(?i:Ubuntu|Debian|Mint)/ => "solr-tomcat",
     default => "solr",
   }
 

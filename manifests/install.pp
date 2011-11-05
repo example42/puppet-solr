@@ -12,7 +12,7 @@
 #
 class solr::install inherits solr {
 
-  case $install {
+  case $solr::install {
 
     package: {
       package { "solr":
