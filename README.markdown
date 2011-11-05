@@ -1,7 +1,11 @@
 # Puppet module: solr
 
-This module installs the solr web application.
-You need to configure separately the Web or Application Server that is going to host solr
+This is a Puppet solr module from the second generation of Example42 Puppet Modules.
+Made by Alessandro Franceschi / Lab42 - http://www.example42.com
+Released under the terms of Apache 2 License.
+Check Modulefile for dependencies.
+
+Development has been sponsored by Elce - http://www.elce.us
 
 
 ## USAGE - Basic management
@@ -9,25 +13,13 @@ You need to configure separately the Web or Application Server that is going to 
 
         class { "solr": }
 
-* Disable solr service.
-
-        class { "solr":
-          disable => true,
-        }
-
-* Disable solr service at boot time, but don't stop if is running.
-
-        class { "solr":
-          disableboot => true,
-        }
-
-* Remove solr package
+* Remove solr 
 
         class { "solr":
           absent => true,
         }
 
-* Define solr installation method: Valid values for install => are "package" (default), "source" and puppi.
+* Define solr installation method: Valid values for install => are "package" (default), "source" and "puppi".
 
         class { "solr":
           install => "source",
@@ -84,29 +76,18 @@ You need to configure separately the Web or Application Server that is going to 
 
 
 ## USAGE - Example42 extensions management 
-* Activate puppi (reccomended, but disabled by default)
+* Activate puppi (recommended, but disabled by default)
   Note that this option requires the usage of Example42 puppi module
 
         class { "solr": 
           puppi    => true,
         }
 
-* Activate automatic monitoring (reccomended, but disabled by default)
+* Activate automatic monitoring (recommended, but disabled by default)
   This option requires the usage of Example42 monitor and relevant monitor tools modules
 
         class { "solr":
           monitor      => true,
           monitor_tool => [ "nagios" , "monit" , "munin" ],
         }
-
-* Activate automatic firewalling 
-  This option requires the usage of Example42 firewall and relevant firewall tools modules
-
-        class { "solr":       
-          firewall      => true,
-          firewall_tool => "iptables",
-          firewall_src  => "10.42.0.0/24",
-          firewall_dst  => "$ipaddress_eth0",
-        }
-
 
