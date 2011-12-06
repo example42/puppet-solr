@@ -1,8 +1,11 @@
 # Puppet module: solr
 
 This is a Puppet solr module from the second generation of Example42 Puppet Modules.
+
 Made by Alessandro Franceschi / Lab42 - http://www.example42.com
+
 Released under the terms of Apache 2 License.
+
 Check Modulefile for dependencies.
 
 Development has been sponsored by Elce - http://www.elce.us

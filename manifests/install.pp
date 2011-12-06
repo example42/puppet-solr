@@ -37,7 +37,7 @@ class solr::install inherits solr {
         predeploy_customcommand  => "${solr::install_precommand}",
         postdeploy_customcommand => "${solr::install_postcommand}",
         report_email             => "root",
-        auto_deploy              => "once",
+        auto_deploy              => true,
         enable                   => true,
       }
     }
