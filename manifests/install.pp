@@ -22,7 +22,7 @@ class solr::install inherits solr {
     }
 
     source: {
-      netinstall { "netinstall_solr":
+      puppi::netinstall { "netinstall_solr":
         url                 => "${solr::install_source}",
         destination_dir     => "${solr::install_destination}",
         preextract_command  => "${solr::install_precommand}",
