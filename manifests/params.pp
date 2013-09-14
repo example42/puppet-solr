@@ -19,8 +19,8 @@ class solr::params {
     default                   => 'source',
   }
 
-  # Install source from the upstream provider is updated to module's last update time
-  # You may need to change this: use the "install_source" parameter of the solr class
+  # Install source from the upstream provider is updated to module's last update time
+  # You may need to change this: use the "install_source" parameter of the solr class
   $install_source = 'http://www.apache.org/dist/lucene/solr/3.4.0/apache-solr-3.4.0.tgz'
 
   $install_destination = $::operatingsystem ? {
