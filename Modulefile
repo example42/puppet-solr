@@ -1,5 +1,5 @@
 name 'example42-solr'
-version '2.0.5'
+version '2.0.6'
 
 author 'Alessandro Franceschi'
 license 'Apache2'
