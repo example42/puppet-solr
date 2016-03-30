@@ -1,5 +1,6 @@
 /.gradle
 /.rvmrc
+/metadata.json
 build
 pkg/
 Session.vim
