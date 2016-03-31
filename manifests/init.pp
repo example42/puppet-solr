@@ -220,7 +220,7 @@ class solr (
       owner   => 'root',
       group   => 'root',
       require => Class['puppi'],
-      content => inline_template('<%= puppivars.to_yaml %>'),
+      content => inline_template('<%= @puppivars.to_yaml %>'),
     }
   }
 
